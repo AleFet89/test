@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Тестовое задание</title>
+	<link rel="stylesheet" href="libs/jqueryui-selectmenu/jquery-ui.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="wrapper">
+		<h1 class="visually-hidden">Тестовое задание</h1>
+		<section class="form-box">
+			<div class="form-box__container">
+				<h2 class="form-box__title">FTL: Прямая машина</h2>
+				<form class="form-box__form form" action="/" method="post">
+					<h3 class="form__title"><span class="form__number">1</span>Маршрут</h3>
+					<div class="form__group">				
+						<label class="form__label" for="course-from-field">Откуда</label>
+						<input class="form__input" type="text" name="courseFrom" id="course-from-field" required>
+					</div>
+					<div class="form__group">
+						<label class="form__label" for="course-to-field">Куда</label>
+						<input class="form__input" type="text" name="courseTo" id="course-to-field" required>
+					</div>
+					<h3 class="form__title"><span class="form__number">2</span>Транспорт</h3>
+					<div class="form__group-quarter-area">
+						<div class="form__group-quarter-width">				
+							<label class="form__label" for="capacity-field">Грузоподъёмность</label>
+							<select class="form__select1" name="capacity" id="capacity-field">
+								<option class="form__option" value="1">Вариант 1</option>
+								<option class="form__option" value="2">Вариант 2</option>
+								<option class="form__option" value="3">Вариант 3</option>
+								<option class="form__option" value="4">Вариант 4</option>
+								<option class="form__option" value="5">Вариант 5</option>
+							</select>
+						</div>
+						<div class="form__group-quarter-width">
+							<label class="form__label" for="lading-mode-field">Способ погрузки</label>
+							<select class="form__select2" name="ladingMode" id="lading-mode-field">
+								<option class="form__option" value="1" selected>Задняя</option>
+								<option class="form__option" value="2">Вариант 2</option>
+								<option class="form__option" value="3">Вариант 3</option>
+								<option class="form__option" value="4">Вариант 4</option>
+								<option class="form__option" value="5">Вариант 5</option>
+							</select>					
+						</div>
+					</div>					
+					<h3 class="form__title"><span class="form__number">3</span>Груз</h3>
+					<div class="form__group-area">
+						<div class="form__group-half-width">
+							<label class="form__label" for="cargo-type-field">Тип груза</label>
+							<select class="form__select2" name="cargoType" id="cargo-type-field">	
+								<option class="form__option" value="1">Вариант 1</option>
+								<option class="form__option" value="2">Вариант 2</option>
+								<option class="form__option" value="3">Вариант 3</option>
+								<option class="form__option" value="4">Вариант 4</option>
+								<option class="form__option" value="5">Вариант 5</option>
+							</select>
+						</div>
+						<div class="form__group-quarter-area half-width">
+							<div class="form__group-quarter-width form__group-quarter-width_hidden">				
+								<label class="form__label" for="hazard-rank-field">Класс опасности</label>
+								<select class="form__select2" name="hazardRank" id="hazard-rank-field">
+									<option class="form__option" value="1">Вариант 1</option>
+									<option class="form__option" value="2">Вариант 2</option>
+									<option class="form__option" value="3">Вариант 3</option>
+									<option class="form__option" value="4">Вариант 4</option>
+									<option class="form__option" value="5" selected>Класс 5 — Окисляющие вещества и органические перекиси
+									</option>
+								</select>
+							</div>
+							<div class="form__group-quarter-width">
+								<label class="form__label" for="declared-value-field">Объявленная ценность, ₽</label>
+								<input class="form__input" type="text" name="declaredValue" id="declared-value-field" placeholder="≥ 1" required>		
+							</div>
+						</div>
+					</div>										
+					<div class="form__checkbox-area">
+						<input class="form__custom-checkbox" id="temperature-condition-field" name="temperatureCondition" type="checkbox">
+						<label class="form__checkbox-label" for="temperature-condition-field">Требуется температурный режим</label>					
+					</div>
+					<div class="form__temperature-area">
+						<div class="form__group-quarter-width">
+							<label class="form__label" for="temperature-from-field">От, <sup>o</sup>C</label>
+							<input class="form__input" type="text" name="temperatureFrom" id="temperature-from-field" placeholder="-20" required>		
+					</div>
+					<div class="form__group-quarter-width">
+						<label class="form__label" for="temperature-to-field">До, <sup>o</sup>C</label>
+						<input class="form__input" type="text" name="temperatureTo" id="temperature-to-field" placeholder="+23" required>		
+					</div>
+					</div>
+					<h3 class="form__title"><span class="form__number">4</span>Время</h3>
+					<div class="form__group form__group_flex">
+						<label class="form__label" for="arrival-time-field">Когда прибыть на точку</label>
+						<p class="form__text">700 км в день</p>
+						<div class="form__input-badges-area">
+							<input class="form__input" type="text" name="arrivalTime" id="arrival-time-field" placeholder="Адрес не указан" required><span class="form__badge">Не выбрано</span>
+						</div>						
+					</div>
+					<div class="form__group">
+						<label class="form__label" for="message-field">Комментарий к заказу</label>
+						<textarea class="form__textarea" name="message" id="message-field" placeholder="Укажите особенности въезда на территорию склада или подъезда к адресу"></textarea>
+					</div>
+				</form>
+				<aside class="tooltip">
+					<h3 class="visually-hidden">Подсказка</h3>
+					<p class="tooltip__text">
+						Для расчета стоимости необходимо ввести параметры груза, пункты отправки и прибытия.
+					</p>		
+				</aside>				
+			</div>					
+		</section>		
+	</div>	
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="libs/jqueryui-selectmenu/jquery-ui.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>

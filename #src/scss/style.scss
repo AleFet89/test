@@ -1,0 +1,446 @@
+@import '_vars.scss';
+@import '_mixins.scss';
+@import '_fonts.scss';
+@import '_normalize.scss';
+/* ========================================================================== */
+/* ---------------------Основные стили---------------- */
+*,
+*::before,
+*::after {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+html, 
+body {
+	margin: 0;
+  	padding: 0;
+  	font-family: $body-font-family;
+  	font-size: 15px;
+  	line-height: 18px; 
+  	font-weight: 400; 
+	font-style: normal;
+	color: #ffffff;
+	background-color: #343539; 		
+}
+
+.wrapper {
+	min-height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.visually-hidden {
+	position: absolute;
+   clip: rect(0 0 0 0);
+   width: 1px;
+   height: 1px;
+   margin: -1px;
+}
+
+.form-box {
+	&__container {
+		max-width: 1140px;
+		margin: 0 auto 100px;
+		padding: 0 16px;
+		display: flex;
+		flex-wrap: wrap;
+		@include desktopFirst($bigPhone) {
+			margin: 0 auto 0;
+		}
+	}
+	&__title {
+		flex-grow: 1;
+		margin: 0;
+		@include adaptiveValue("margin-top", 40, 30, 1);
+		margin-bottom: 20px;
+		font-weight: 700;
+		@include adaptiveValue("font-size", 56, 27, 1);
+		@include adaptiveValue("line-height", 68, 40, 1);
+	}
+	&__form {
+		flex-grow: 1;
+		flex-basis: 100%;
+		max-width: 728px;
+		margin: 0;
+		margin-right: 16px;
+		@include desktopFirst($bigPhone) {
+			margin-right: 0;
+		}
+	}
+}
+
+.form {	
+	display: flex;
+	flex-wrap: wrap;	
+	justify-content: flex-start;
+
+	&__title {
+		position: relative;
+		flex-grow: 1;
+		flex-basis: 100%;
+		font-weight: 700;
+		@include adaptiveValue("font-size", 24, 20, 1);
+		line-height: 30px;
+		margin: 0;	
+		margin-top: 40px;
+		margin-bottom: 17px;
+		padding-left: 33px;		
+		&:first-of-type {
+			margin-top: 0;
+		}		
+	}
+	&__number {
+		position: absolute;
+		top: 10%;
+		left: 0;
+		display: inline-flex;
+		justify-content: center;
+		align-items: flex-start;	
+		width: 24px;
+  		height: 24px;
+		margin-right: 8px;
+		font-size: 16px;
+		line-height: 19px;
+		background-color: #ef483e;
+		border-radius: 50%;
+	}
+	&__group {
+		flex-grow: 1;
+		flex-basis: 100%;
+		&:first-of-type {
+			margin-bottom: 16px;
+		}		
+	}
+	&__group-area {
+		flex-grow: 1;
+		flex-basis: 100%;
+		@include desktopFirst($smallPhone) {
+			display: flex;
+			align-items: flex-end;
+		}
+	}
+	&__label {
+		display: block;
+		margin: 0;
+		margin-bottom: 8px;	
+		font-size: 13px;
+		line-height: 16px;		
+	}
+	&__input {
+		width: 100%;
+		min-height: 44px;
+		padding: 0 16px;
+		font-size: 15px;
+		line-height: 19px;		
+		outline: none;	
+		border: none;	
+	}
+	&__group-quarter-area {
+		flex-grow: 1;
+		flex-basis: 100%;
+		display: flex;
+		align-items: flex-end;	
+		&.half-width {
+			@include desktopFirst($smallPhone) {
+				flex-basis: 50%;
+			}
+		}	
+	}
+	&__group-quarter-width_hidden {
+		@include desktopFirst($smallPhone) {
+			display: none;
+		}	
+	}
+	&__group-quarter-width {
+		flex-grow: 1;
+		flex-basis: 100%;
+		max-width: 172px;
+		margin-right: 12px;	
+		&:nth-of-type(even) {
+			@include desktopFirst($smallPhone) {
+				margin-right: 0;				
+			}	
+		}
+		@include desktopFirst($smallPhone) {
+			max-width: unset;			
+		}			
+	}	
+	&__group-half-width {
+		flex-grow: 1;
+		flex-basis: 50%;
+		max-width: 356px;
+		margin-bottom: 16px;
+		@include desktopFirst($smallPhone) {
+			flex-grow: 0;
+			max-width: unset;
+			margin-right: 12px;
+			margin-bottom: 0;
+		}	
+	}	
+	&__checkbox-area {		
+		position: relative;
+		flex-grow: 1;
+		flex-basis: 100%;
+		margin-top: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	&__custom-checkbox {
+		position: absolute;
+		z-index: -1;
+		opacity: 0;
+		& + label::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 22px;
+			height: 22px;  
+			border: 2px solid #ffffff;
+			background-color: transparent;
+		 }
+		 &:hover + label:hover::before {
+			background-color: #ef483e;
+		 }
+		 &:checked + label::before {  
+			border-color: #ef483e;   
+			background: #ef483e url("../img/checkbox.png") center center no-repeat;
+		 }
+	}
+	&__checkbox-label {
+		align-self: center;
+		padding: 4px 0 0 35px;
+		font-size: 13px;
+		line-height: 16px;
+	}
+	&__temperature-area {		
+		display: none;
+		margin-top: 16px;
+		&.show {
+			display: flex;
+		}
+		@include desktopFirst($smallPhone) {
+			flex-grow: 1;
+		}
+	}
+	&__text {
+		margin: 0;
+		margin-bottom: 8px;
+		font-size: 13px;
+		line-height: 16px;
+	}
+	&__group_flex {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;		
+	}
+	&__input-badges-area {
+		position: relative;
+		flex-grow: 1;
+		flex-basis: 100%;	
+		margin-bottom: 16px;	
+		&::before {
+			content:  "";
+			position: absolute;
+			top: 10px;
+			left: 8px;
+			width: 24px;
+  			height: 24px;
+			background: url("../img/main-dot.png") no-repeat;			
+		}
+		&.red-circle::before {
+			content:  "";
+			position: absolute;
+			top: 14px;
+			left: 12px;
+			width: 18px;
+			height: 18px;
+			background: url("../img/main-dot-red.png") no-repeat;
+			transition: all 0.1s ease 0s;
+		}
+		
+		& .form__input {
+			min-height: 42px;
+			padding-left: 35px;
+			padding-right: 140px;
+			color: rgba(196, 196, 196, 1);
+			background-color: #4b4b4f;				
+		}
+	}
+	&__badge {
+		position: absolute;
+		top: 9px;
+		right: 10px;
+		width: 119px;
+  		height: 24px;
+		padding: 3px 0 0 10px;
+		color: #ffffff;
+		opacity: 0.3;
+		border-radius: 2px;
+		background-color: #717174;
+		text-transform: uppercase;
+		transition: all 0.5s ease 0s;
+		&.active {
+			opacity: 1;
+		}
+	}
+	&__textarea {
+		width: 100%;
+		min-height: 80px;
+		margin-bottom: 20px;
+		padding: 13px 23px 13px 14px;
+		color: #cfcfcf;
+		resize: none;
+		outline: none;
+		border: none;
+		&:focus {
+			color: #000000;
+		}
+	}
+}
+
+/* placeholder color */
+::-webkit-input-placeholder {
+	color: #bcbec7;
+}
+::-moz-placeholder {
+	color: #bcbec7;
+} /* Firefox 19+ */
+:-moz-placeholder {
+	color: #bcbec7;
+} /* Firefox 18- */
+:-ms-input-placeholder {
+	color: #bcbec7;
+}
+
+/* плавное изменение прозрачности  placeholder-а при фокусе */
+.form__input::-webkit-input-placeholder {
+	opacity: 1; 
+	transition: opacity 0.3s ease;
+}
+.form__input::-moz-placeholder {
+	opacity: 1; 
+	transition: opacity 0.3s ease;
+}
+.form__input:-moz-placeholder {
+	opacity: 1; 
+	transition: opacity 0.3s ease;
+}
+.form__input:-ms-input-placeholder {
+	opacity: 1; 
+	transition: opacity 0.3s ease;
+}
+.form__input:focus::-webkit-input-placeholder {
+	opacity: 0; 
+	transition: opacity 0.3s ease;
+}
+.form__input:focus::-moz-placeholder {
+	opacity: 0; 
+	transition: opacity 0.3s ease;
+}
+.form__input:focus:-moz-placeholder {
+	opacity: 0; 
+	transition: opacity 0.3s ease;
+}
+.form__input:focus:-ms-input-placeholder {
+	opacity: 0; 
+	transition: opacity 0.3s ease;
+}
+
+/* customizing select */
+.form__group-quarter-width,
+.form__group-half-width {
+	& .ui-button {
+		width: 100%;
+		max-height: 43px;	
+		margin-right: 12px;
+		padding: 14px 9px 14px 14px;	
+		line-height: 18px;
+		color: #bcbec7;
+		outline: none;
+		border: none;
+		appearance: none;	
+		background-color: #ffffff;	
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		border-top-right-radius: 0;
+		border-top-left-radius: 0;
+		transition: all 0.8s ease 0s;
+		&:hover,
+		&:focus {
+			color: #000000;
+			}
+		}
+	& .ui-selectmenu-icon.ui-icon {
+		background-position: -65px 0;
+	}
+	& .ui-selectmenu-button-open
+		.ui-selectmenu-icon.ui-icon {
+			background-position: 0 0;
+	}
+	& .ui-menu .ui-menu-item-wrapper {
+		padding: 5px 12px 5px 12px;
+		transition: all 0.8s ease 0s;
+	}
+}
+
+.ui-widget {
+	transition: all 0.8s ease 0s;
+}
+
+.ui-widget-content {
+	border: none; 
+ }
+
+.ui-widget.ui-widget-content {	
+	min-height: 28px;
+	color: #000000;
+	border: none;
+}
+
+.ui-state-active, 
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active, 
+a.ui-button:active, 
+.ui-button:active, 
+.ui-button.ui-state-active:hover {
+	border: none;
+	background: #ef483e;
+	font-weight: normal;
+	color: #fff;
+}
+
+.ui-menu .ui-menu-item-wrapper {
+	position: relative;
+	padding: 5px 12px 5px 12px;
+}
+
+.ui-selectmenu-text {
+	text-overflow: unset;
+}
+
+.ui-selectmenu-text:hover {
+	text-overflow: unset;
+	background-image: linear-gradient(to right, #000000, rgba(0, 0, 0, 0));
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.tooltip {
+	@include adaptiveValue("max-width", 356, 343, 1);
+  	max-height: 102px;  	
+	margin-bottom: 37px;
+  	box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
+  	background-color: #4b4b4f;
+	@include desktopFirst($smallPhone) {
+		max-height: unset; 
+		min-height: 102px;
+	}
+	&__text {
+		margin: 0;
+		padding: 24px 31px 24px 24px;
+	}
+}
